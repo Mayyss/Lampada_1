@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    font-family: monospace;
+}
+main{
+    flex-grow: 1;
+    text-align: center;
+}
+
+button{
+    height: 100px;
+    width: 40px;
+}
+footer{
+    font-style: italic;
+    height: 50px;
+    text-align: center;
+}
