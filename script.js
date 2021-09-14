@@ -29,16 +29,32 @@ function quebrarLampada(){
     lampada.src = "img/quebrada.jpg"
 }
 
-function piscar()
-{
-    const botaoPiscar = document.getElementById("btnPiscar")
-    if(botaoPiscar.textContent == "Parar"){
-        idLigar = setInterval(ligarLampada,500)
-        idDesligar = setInterval(desligarLampada,1000)
-        botaoPiscar.textContent = "Parar"
+function lampadaDesligada(){
+    return lampada.src.includes ("desligada")
+}
+
+function trocarImagem(){
+    if (lampadaDesligada()) {
+        ligarLampada()
+    }
+    else{
+        desligarLampada()
     }
 }
 
+function piscar()
+{
+    // const botaoPiscar = document.getElementById("btnPiscar")
+    // if(botaoPiscar.textContent == "Parar"){
+    //     idLigar = setInterval(ligarLampada,500)
+    //     idDesligar = setInterval(desligarLampada,1000)
+    //     botaoPiscar.textContent = "Parar"
+    // }
+
+    setInterval(trocarImagem,1000)
+}
+
+//callback é uma função passada como parâmetro para outra função
 document.getElementById("btnLigar")
     .addEventListener("click",ligarLampada)
 
