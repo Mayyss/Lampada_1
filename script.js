@@ -3,9 +3,9 @@
 "use strict"
 //                                      evento
 const lampada = document.getElementById("lampada")
-let idLigar 
-let idDesligar
-
+// let idLigar 
+// let idDesligar
+let idIntervalo
 
 function lampadaInteira(){
     return lampada.src.includes ("ligada")
@@ -42,17 +42,33 @@ function trocarImagem(){
     }
 }
 
-function piscar()
-{
-    // const botaoPiscar = document.getElementById("btnPiscar")
+function pararPiscar(){
+    clearInterval(idIntervalo)
+}
+
+// const botaoPiscar = document.getElementById("btnPiscar")
     // if(botaoPiscar.textContent == "Parar"){
     //     idLigar = setInterval(ligarLampada,500)
     //     idDesligar = setInterval(desligarLampada,1000)
     //     botaoPiscar.textContent = "Parar"
     // }
 
-    setInterval(trocarImagem,1000)
+    // document.getElementById("piscar")
+function piscarLampada()
+{
+    const piscar = document.getElementById("btnPiscar")
+    if (piscar.textContent == "Piscar")
+    {
+        idIntervalo = setInterval(trocarImagem, 1000)
+        piscar.textContent = "Parar"    
+    }
+    else{
+        pararPiscar()
+        piscar.textContent = "Piscar"
+    }
+    
 }
+
 
 //callback é uma função passada como parâmetro para outra função
 document.getElementById("btnLigar")
@@ -62,10 +78,8 @@ document.getElementById("btnDesligar")
     .addEventListener("click",desligarLampada)
 
 document.getElementById("btnPiscar")
-    .addEventListener("click", piscar)
+    .addEventListener("click", piscarLampada)
 
 lampada.addEventListener("mouseover", ligarLampada)
 lampada.addEventListener("mouseout",desligarLampada)
-
-
-document.getElementById("lampada").addEventListener("dblclick",quebrarLampada)
+lampada.addEventListener("dblclick",quebrarLampada)
